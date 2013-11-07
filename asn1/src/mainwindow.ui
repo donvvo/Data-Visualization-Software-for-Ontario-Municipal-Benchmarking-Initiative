@@ -34,7 +34,7 @@
     </property>
     <widget class="QWidget" name="View">
      <attribute name="title">
-      <string>View</string>
+      <string>Chart</string>
      </attribute>
      <widget class="QCustomPlot" name="customPlot" native="true">
       <property name="geometry">
@@ -46,6 +46,11 @@
        </rect>
       </property>
      </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Data</string>
+     </attribute>
     </widget>
     <widget class="QWidget" name="Settings">
      <attribute name="title">
@@ -219,12 +224,6 @@
        <string>Get Graph</string>
       </property>
      </widget>
-     <zorder>verticalLayoutWidget</zorder>
-     <zorder>label</zorder>
-     <zorder>verticalLayoutWidget_2</zorder>
-     <zorder>label_2</zorder>
-     <zorder>pushButton</zorder>
-     <zorder>gridLayoutWidget</zorder>
     </widget>
    </widget>
   </widget>
