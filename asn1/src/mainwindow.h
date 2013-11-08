@@ -35,6 +35,8 @@ private slots:
 
     void on_MainWindow_customContextMenuRequested(const QPoint &pos);
 
+    void export_to_image();
+
 private:
     Ui::MainWindow *ui;
 
