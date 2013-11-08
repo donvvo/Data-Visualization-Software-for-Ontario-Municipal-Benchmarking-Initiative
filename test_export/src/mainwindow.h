@@ -33,7 +33,10 @@ private slots:
     //! When "Get Graph" button is clicked, this slot is triggered.
     void on_pushButton_clicked();
 
-    void on_MainWindow_customContextMenuRequested(const QPoint &pos);
+    //! Export to a PDF file
+    void export_to_pdf();
+
+    //void on_MainWindow_customContextMenuRequested(const QPoint &pos);
 
 private:
     Ui::MainWindow *ui;

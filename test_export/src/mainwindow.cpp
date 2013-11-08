@@ -9,6 +9,11 @@
 #include "ui_mainwindow.h"
 #include "qcustomplot.h"
 #include "stub.h"
+#include "QGraphicsScene"
+#include "QPrintDialog"
+#include "QImage"
+#include "QFileDialog"
+#include "QMessageBox"
 
 
 /*!
@@ -19,9 +24,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->Settings->
     QObject::connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(on_push_button(bool)));
 
-
+    QObject::connect(ui->export_pdf,SIGNAL(clicked(bool)), this, SLOT(export_to_pdf()));
 
 
 }
@@ -579,3 +585,20 @@ void MainWindow::on_pushButton_clicked()
     createGraph();
 }
 
+void MainWindow::export_to_pdf(){
+    QString saveFilename = QFileDialog::getSaveFileName(this, "Save as", "Choose a filename", "PNG(*.png);; TIFF(*.tiff *.tif);; JPEG(*.jpg *.jpeg)");
+
+    QString saveExtension = "PNG";
+    int pos = saveFilename.lastIndexOf('.');
+    if (pos >= 0)
+        saveExtension = saveFilename.mid(pos + 1);
+
+    if(!QPixmap::grabWidget(ui->View).save(saveFilename, qPrintable(saveExtension)))
+    {
+        // since you have a widget, just use grabWidget() here. winId() would possibly have
+        // portability issues on other platforms.  qPrintable(saveExtension) is effectively
+        // the same as saveExtension.toLocal8Bit().constData()
+
+        QMessageBox::warning(this, "File could not be saved", "ok", QMessageBox::Ok);
+    }
+}
