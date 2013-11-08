@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[6];
-    char stringdata[96];
+    char stringdata[92];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,15 +30,15 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10),
-QT_MOC_LITERAL(1, 11, 21),
-QT_MOC_LITERAL(2, 33, 0),
-QT_MOC_LITERAL(3, 34, 40),
-QT_MOC_LITERAL(4, 75, 3),
-QT_MOC_LITERAL(5, 79, 15)
+QT_MOC_LITERAL(1, 11, 14),
+QT_MOC_LITERAL(2, 26, 0),
+QT_MOC_LITERAL(3, 27, 40),
+QT_MOC_LITERAL(4, 68, 3),
+QT_MOC_LITERAL(5, 72, 18)
     },
-    "MainWindow\0on_pushButton_clicked\0\0"
+    "MainWindow\0slot_get_graph\0\0"
     "on_MainWindow_customContextMenuRequested\0"
-    "pos\0export_to_image\0"
+    "pos\0slot_save_to_image\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,12 +56,12 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   29,    2, 0x08,
-       3,    1,   30,    2, 0x08,
-       5,    0,   33,    2, 0x08,
+       1,    1,   29,    2, 0x08,
+       3,    1,   32,    2, 0x08,
+       5,    0,   35,    2, 0x08,
 
  // slots: parameters
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Bool,    2,
     QMetaType::Void, QMetaType::QPoint,    4,
     QMetaType::Void,
 
@@ -73,9 +73,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     if (_c == QMetaObject::InvokeMetaMethod) {
         MainWindow *_t = static_cast<MainWindow *>(_o);
         switch (_id) {
-        case 0: _t->on_pushButton_clicked(); break;
+        case 0: _t->slot_get_graph((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 1: _t->on_MainWindow_customContextMenuRequested((*reinterpret_cast< const QPoint(*)>(_a[1]))); break;
-        case 2: _t->export_to_image(); break;
+        case 2: _t->slot_save_to_image(); break;
         default: ;
         }
     }

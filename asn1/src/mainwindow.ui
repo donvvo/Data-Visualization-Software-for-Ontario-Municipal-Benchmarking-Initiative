@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>661</width>
-    <height>418</height>
+    <height>452</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -204,7 +204,7 @@
          </widget>
         </item>
         <item row="3" column="2">
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="button_get_graph">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>

@@ -60,13 +60,13 @@ public:
     QCheckBox *twoThousandEleven;
     QCheckBox *checkBox_2;
     QPushButton *button_export_to_image;
-    QPushButton *pushButton;
+    QPushButton *button_get_graph;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(661, 418);
+        MainWindow->resize(661, 452);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -218,12 +218,12 @@ public:
 
         gridLayout_4->addWidget(button_export_to_image, 3, 3, 1, 1);
 
-        pushButton = new QPushButton(Settings);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy);
+        button_get_graph = new QPushButton(Settings);
+        button_get_graph->setObjectName(QStringLiteral("button_get_graph"));
+        sizePolicy.setHeightForWidth(button_get_graph->sizePolicy().hasHeightForWidth());
+        button_get_graph->setSizePolicy(sizePolicy);
 
-        gridLayout_4->addWidget(pushButton, 3, 2, 1, 1);
+        gridLayout_4->addWidget(button_get_graph, 3, 2, 1, 1);
 
         tabWidget->addTab(Settings, QString());
 
@@ -262,7 +262,7 @@ public:
         twoThousandEleven->setText(QApplication::translate("MainWindow", "2011", 0));
         checkBox_2->setText(QApplication::translate("MainWindow", "2012", 0));
         button_export_to_image->setText(QApplication::translate("MainWindow", "Save Graph", 0));
-        pushButton->setText(QApplication::translate("MainWindow", "Get Graph", 0));
+        button_get_graph->setText(QApplication::translate("MainWindow", "Get Graph", 0));
         tabWidget->setTabText(tabWidget->indexOf(Settings), QApplication::translate("MainWindow", "Settings", 0));
     } // retranslateUi
 

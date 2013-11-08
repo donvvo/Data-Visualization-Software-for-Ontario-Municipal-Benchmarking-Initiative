@@ -9,10 +9,6 @@
 #include "ui_mainwindow.h"
 #include "qcustomplot.h"
 #include "stub.h"
-#include "QFileDialog"
-#include "QMessageBox"
-
-
 
 /*!
  * Creating "Get Graph" button which will generate the graph once pressed
@@ -22,8 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QObject::connect(ui->pushButton, SIGNAL(clicked(bool)), this, SLOT(on_push_button(bool)));
-    QObject::connect(ui->button_export_to_image,SIGNAL(clicked(bool)), this, SLOT(export_to_image()));
+    QObject::connect(ui->button_get_graph, SIGNAL(clicked(bool)), this, SLOT(slot_get_graph(bool)));
+    QObject::connect(ui->button_export_to_image,SIGNAL(clicked(bool)), this, SLOT(slot_save_to_image()));
 
 
 
@@ -37,12 +33,13 @@ MainWindow::~MainWindow()
 
 
 /*!
- * Function: createGraph
- * Description: This function is responsible for generating the graph based on the data passed,
+ * Function: slot_get_graph
+ * Description: When "Get Graph" is clicked, this function is responsible for generating the graph based on the data passed,
  * a full description of each part is given below
+ * @param bool check when it is check
  */
-void MainWindow::createGraph()
-{    
+void MainWindow::slot_get_graph(bool)
+{
 
 
     Stub *stub = new Stub(); //! stub contains data for testing purpose.
@@ -66,24 +63,14 @@ void MainWindow::createGraph()
     ui->customPlot->xAxis->setTickStep(1.0);
     ui->customPlot->xAxis->setSubTickCount(0);
 
-    //! Set a color for each city based on the order of the cities in the list
-    QVector<QString> colourSelect;
-    colourSelect.append("light blue");
-    colourSelect.append("light yellow");
-    colourSelect.append("purple");
-    colourSelect.append("light green");
-    colourSelect.append("red");
-    colourSelect.append("orange");
-    colourSelect.append("green");
-    colourSelect.append("pink");
-    colourSelect.append("grey");
-    colourSelect.append("blue");
+    chartcolour *colourSelect = new chartcolour();
 
     ui->customPlot->legend->clearItems();       //!Clears the existing data from the legend
     ui->customPlot->axisRect()->setAutoMargins(QCP::msLeft | QCP::msTop | QCP::msBottom);
     ui->customPlot->axisRect()->setMargins(QMargins(0,0,150,0));
     ui->customPlot->axisRect()->insetLayout()->setInsetPlacement(0, QCPLayoutInset::ipFree);
     ui->customPlot->axisRect()->insetLayout()->setInsetRect(0, QRectF(1.1,0,0.1,0.1));
+
 
 
     //! Scaling the bar width based on the number of cities checked
@@ -121,7 +108,7 @@ void MainWindow::createGraph()
 
 
     //! Calculating the new bar width
-        double totalWidth = 0.8;
+    double totalWidth = 0.8;
     barWidth = totalWidth / i;
     double setBack = totalWidth/2;
     double offset = 0;
@@ -131,7 +118,7 @@ void MainWindow::createGraph()
     if(ui->barrie->isChecked()) {   //! if barrie is checked
             QCPBars *myBars = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars->setWidth(barWidth);
-            myBars->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars->setName("Barrie");
 
             ui->customPlot->addPlottable(myBars);
@@ -176,7 +163,7 @@ void MainWindow::createGraph()
             //! This is for Calgary
             QCPBars *myBars2 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars2->setWidth(barWidth);
-            myBars2->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars2->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
 
 
             ui->customPlot->addPlottable(myBars2);
@@ -223,7 +210,7 @@ void MainWindow::createGraph()
         if (ui->london->isChecked()) {
             QCPBars *myBars3 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars3->setWidth(barWidth);
-            myBars3->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars3->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars3->setName("London");
 
             ui->customPlot->addPlottable(myBars3);
@@ -270,7 +257,7 @@ void MainWindow::createGraph()
         if (ui->hamilton->isChecked()) {
             QCPBars *myBars4 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars4->setWidth(barWidth);
-            myBars4->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars4->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars4->setName("Hamilton");
 
             ui->customPlot->addPlottable(myBars4);
@@ -314,7 +301,7 @@ void MainWindow::createGraph()
         if (ui->ottawa->isChecked()) {
             QCPBars *myBars5 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars5->setWidth(barWidth);
-            myBars5->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars5->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars5->setName("Ottawa");
 
             ui->customPlot->addPlottable(myBars5);
@@ -358,7 +345,7 @@ void MainWindow::createGraph()
         if (ui->sudbury->isChecked()) {
             QCPBars *myBars6 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars6->setWidth(barWidth);
-            myBars6->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars6->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars6->setName("Sudbury");
 
             ui->customPlot->addPlottable(myBars6);
@@ -404,7 +391,7 @@ void MainWindow::createGraph()
         if (ui->thunderBay->isChecked()) {
             QCPBars *myBars7 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars7->setWidth(barWidth);
-            myBars7->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars7->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars7->setName("Thunder Bay");
 
             ui->customPlot->addPlottable(myBars7);
@@ -447,7 +434,7 @@ void MainWindow::createGraph()
         if (ui->toronto->isChecked()) {
             QCPBars *myBars8 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars8->setWidth(barWidth);
-            myBars8->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars8->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars8->setName("Toronto");
 
             ui->customPlot->addPlottable(myBars8);
@@ -490,7 +477,7 @@ void MainWindow::createGraph()
         if (ui->winnipeg->isChecked()) {
             QCPBars *myBars9 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars9->setWidth(barWidth);
-            myBars9->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars9->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars9->setName("Winnipeg");
 
             ui->customPlot->addPlottable(myBars9);
@@ -533,7 +520,7 @@ void MainWindow::createGraph()
         if (ui->windsor->isChecked()) {
             QCPBars *myBars10 = new QCPBars(ui->customPlot->xAxis, ui->customPlot->yAxis);
             myBars10->setWidth(barWidth);
-            myBars10->setBrush(QBrush(QColor(colourSelect.at(barsAdded))));
+            myBars10->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars10->setName("Windor");
 
             ui->customPlot->addPlottable(myBars10);
@@ -573,16 +560,7 @@ void MainWindow::createGraph()
         }
 }
 
-/*!
- * When "Get Graph" is clicked
- * @param bool check when it is check
- */
-void MainWindow::on_pushButton_clicked()
-{
-    createGraph();
-}
-
-void MainWindow::export_to_image(){
+void MainWindow::slot_save_to_image(){
     QString saveFilename = QFileDialog::getSaveFileName(this, "Save as", "Choose a filename", "PNG(*.png);; TIFF(*.tiff *.tif);; JPEG(*.jpg *.jpeg)");
 
     QString saveExtension = "PNG";

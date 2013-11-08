@@ -8,8 +8,11 @@
 
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include"qcustomplot.h"
+#include "qcustomplot.h"
 #include "stub.h"
+#include "QFileDialog"
+#include "QMessageBox"
+#include "chartcolor.h"
 
 #include <QMainWindow>
 
@@ -25,17 +28,14 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-    //! When "Get Graph" button is clicked, on_pushButton_clicked calls this method
-    void createGraph();
-
 
 private slots:
     //! When "Get Graph" button is clicked, this slot is triggered.
-    void on_pushButton_clicked();
+    void slot_get_graph(bool);
 
     void on_MainWindow_customContextMenuRequested(const QPoint &pos);
 
-    void export_to_image();
+    void slot_save_to_image();
 
 private:
     Ui::MainWindow *ui;
