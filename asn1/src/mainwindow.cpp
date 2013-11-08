@@ -363,7 +363,7 @@ void MainWindow::createGraph()
 
             ui->customPlot->addPlottable(myBars6);
             //! Sudbury data
-            QVector<double> sudburyDatatemp = stub->getData("Sudbury");
+            QVector<double> sudburyDatatemp = stub->getData("Sudbury (Greater)");
             QVector<double> sudburyData;
             QVector<double> valueYears;
 
