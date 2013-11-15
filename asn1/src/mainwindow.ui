@@ -95,13 +95,13 @@
      </widget>
     </widget>
     <widget class="QWidget" name="settings">
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
         <width>213</width>
-        <height>321</height>
+        <height>343</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_6">
@@ -190,7 +190,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>210</x>
@@ -288,11 +288,6 @@
        <string>Save Graph</string>
       </property>
      </widget>
-     <zorder></zorder>
-     <zorder></zorder>
-     <zorder></zorder>
-     <zorder>button_get_graph</zorder>
-     <zorder>button_export_to_image</zorder>
     </widget>
    </widget>
    <widget class="QPushButton" name="settingsBtn">
@@ -306,6 +301,31 @@
     </property>
     <property name="text">
      <string>Settings</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bg">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>661</width>
+      <height>452</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>bg</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>661</width>
+      <height>452</height>
+     </size>
+    </property>
+    <property name="shortcut">
+     <string>Ctrl+S</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>

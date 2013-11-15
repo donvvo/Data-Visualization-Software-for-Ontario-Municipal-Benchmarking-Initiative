@@ -43,6 +43,8 @@ private slots:
 
     void on_settingsBtn_clicked();
 
+    void slot_welcome_disappear();
+
 private:
     Ui::MainWindow *ui;
 

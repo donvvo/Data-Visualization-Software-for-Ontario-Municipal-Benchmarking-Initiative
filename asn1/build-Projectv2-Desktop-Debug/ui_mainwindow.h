@@ -19,7 +19,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QWidget>
 #include "qcustomplot.h"
@@ -30,16 +30,15 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QGridLayout *gridLayout;
-    QTabWidget *tabWidget;
-    QWidget *View;
-    QGridLayout *gridLayout_2;
+    QPushButton *graphBtn;
+    QPushButton *tableBtn;
+    QStackedWidget *stackedWidget;
+    QWidget *graph;
     QCustomPlot *customPlot;
-    QWidget *tab;
-    QGridLayout *gridLayout_3;
+    QWidget *table;
     QTableView *tableView;
-    QWidget *Settings;
-    QGridLayout *gridLayout_4;
+    QWidget *settings;
+    QWidget *layoutWidget;
     QGridLayout *gridLayout_6;
     QLabel *label;
     QCheckBox *sudbury;
@@ -52,6 +51,7 @@ public:
     QCheckBox *london;
     QCheckBox *toronto;
     QCheckBox *thunderBay;
+    QWidget *layoutWidget1;
     QGridLayout *gridLayout_5;
     QLabel *label_2;
     QCheckBox *checkBox;
@@ -59,14 +59,17 @@ public:
     QCheckBox *twoThousandTen;
     QCheckBox *twoThousandEleven;
     QCheckBox *checkBox_2;
-    QPushButton *button_export_to_image;
     QPushButton *button_get_graph;
+    QPushButton *button_export_to_image;
+    QPushButton *settingsBtn;
+    QPushButton *bg;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(661, 452);
+        MainWindow->setLayoutDirection(Qt::LeftToRight);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -74,166 +77,164 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(centralWidget->sizePolicy().hasHeightForWidth());
         centralWidget->setSizePolicy(sizePolicy);
-        gridLayout = new QGridLayout(centralWidget);
-        gridLayout->setSpacing(6);
-        gridLayout->setContentsMargins(11, 11, 11, 11);
-        gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        tabWidget = new QTabWidget(centralWidget);
-        tabWidget->setObjectName(QStringLiteral("tabWidget"));
-        View = new QWidget();
-        View->setObjectName(QStringLiteral("View"));
-        gridLayout_2 = new QGridLayout(View);
-        gridLayout_2->setSpacing(6);
-        gridLayout_2->setContentsMargins(11, 11, 11, 11);
-        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
-        customPlot = new QCustomPlot(View);
+        graphBtn = new QPushButton(centralWidget);
+        graphBtn->setObjectName(QStringLiteral("graphBtn"));
+        graphBtn->setGeometry(QRect(20, 20, 93, 29));
+        tableBtn = new QPushButton(centralWidget);
+        tableBtn->setObjectName(QStringLiteral("tableBtn"));
+        tableBtn->setGeometry(QRect(120, 20, 81, 29));
+        stackedWidget = new QStackedWidget(centralWidget);
+        stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
+        stackedWidget->setGeometry(QRect(9, 114, 643, 329));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(stackedWidget->sizePolicy().hasHeightForWidth());
+        stackedWidget->setSizePolicy(sizePolicy1);
+        graph = new QWidget();
+        graph->setObjectName(QStringLiteral("graph"));
+        customPlot = new QCustomPlot(graph);
         customPlot->setObjectName(QStringLiteral("customPlot"));
-
-        gridLayout_2->addWidget(customPlot, 0, 0, 1, 1);
-
-        tabWidget->addTab(View, QString());
-        tab = new QWidget();
-        tab->setObjectName(QStringLiteral("tab"));
-        gridLayout_3 = new QGridLayout(tab);
-        gridLayout_3->setSpacing(6);
-        gridLayout_3->setContentsMargins(11, 11, 11, 11);
-        gridLayout_3->setObjectName(QStringLiteral("gridLayout_3"));
-        tableView = new QTableView(tab);
+        customPlot->setGeometry(QRect(0, -100, 621, 421));
+        stackedWidget->addWidget(graph);
+        table = new QWidget();
+        table->setObjectName(QStringLiteral("table"));
+        tableView = new QTableView(table);
         tableView->setObjectName(QStringLiteral("tableView"));
-
-        gridLayout_3->addWidget(tableView, 0, 0, 1, 1);
-
-        tabWidget->addTab(tab, QString());
-        Settings = new QWidget();
-        Settings->setObjectName(QStringLiteral("Settings"));
-        gridLayout_4 = new QGridLayout(Settings);
-        gridLayout_4->setSpacing(6);
-        gridLayout_4->setContentsMargins(11, 11, 11, 11);
-        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
-        gridLayout_6 = new QGridLayout();
+        tableView->setGeometry(QRect(0, 10, 643, 321));
+        tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        stackedWidget->addWidget(table);
+        settings = new QWidget();
+        settings->setObjectName(QStringLiteral("settings"));
+        layoutWidget = new QWidget(settings);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(0, 0, 213, 343));
+        gridLayout_6 = new QGridLayout(layoutWidget);
         gridLayout_6->setSpacing(6);
+        gridLayout_6->setContentsMargins(11, 11, 11, 11);
         gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
-        label = new QLabel(Settings);
+        gridLayout_6->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
         sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy);
 
         gridLayout_6->addWidget(label, 0, 0, 1, 1);
 
-        sudbury = new QCheckBox(Settings);
+        sudbury = new QCheckBox(layoutWidget);
         sudbury->setObjectName(QStringLiteral("sudbury"));
 
         gridLayout_6->addWidget(sudbury, 1, 0, 1, 1);
 
-        windsor = new QCheckBox(Settings);
+        windsor = new QCheckBox(layoutWidget);
         windsor->setObjectName(QStringLiteral("windsor"));
 
         gridLayout_6->addWidget(windsor, 2, 0, 1, 1);
 
-        barrie = new QCheckBox(Settings);
+        barrie = new QCheckBox(layoutWidget);
         barrie->setObjectName(QStringLiteral("barrie"));
 
         gridLayout_6->addWidget(barrie, 3, 0, 1, 1);
 
-        ottawa = new QCheckBox(Settings);
+        ottawa = new QCheckBox(layoutWidget);
         ottawa->setObjectName(QStringLiteral("ottawa"));
 
         gridLayout_6->addWidget(ottawa, 4, 0, 1, 1);
 
-        winnipeg = new QCheckBox(Settings);
+        winnipeg = new QCheckBox(layoutWidget);
         winnipeg->setObjectName(QStringLiteral("winnipeg"));
 
         gridLayout_6->addWidget(winnipeg, 5, 0, 1, 1);
 
-        calgary = new QCheckBox(Settings);
+        calgary = new QCheckBox(layoutWidget);
         calgary->setObjectName(QStringLiteral("calgary"));
 
         gridLayout_6->addWidget(calgary, 6, 0, 1, 1);
 
-        hamilton = new QCheckBox(Settings);
+        hamilton = new QCheckBox(layoutWidget);
         hamilton->setObjectName(QStringLiteral("hamilton"));
 
         gridLayout_6->addWidget(hamilton, 7, 0, 1, 1);
 
-        london = new QCheckBox(Settings);
+        london = new QCheckBox(layoutWidget);
         london->setObjectName(QStringLiteral("london"));
 
         gridLayout_6->addWidget(london, 8, 0, 1, 1);
 
-        toronto = new QCheckBox(Settings);
+        toronto = new QCheckBox(layoutWidget);
         toronto->setObjectName(QStringLiteral("toronto"));
 
         gridLayout_6->addWidget(toronto, 9, 0, 1, 1);
 
-        thunderBay = new QCheckBox(Settings);
+        thunderBay = new QCheckBox(layoutWidget);
         thunderBay->setObjectName(QStringLiteral("thunderBay"));
 
         gridLayout_6->addWidget(thunderBay, 10, 0, 1, 1);
 
-
-        gridLayout_4->addLayout(gridLayout_6, 1, 0, 2, 1);
-
-        gridLayout_5 = new QGridLayout();
+        layoutWidget1 = new QWidget(settings);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(210, 0, 432, 184));
+        gridLayout_5 = new QGridLayout(layoutWidget1);
         gridLayout_5->setSpacing(6);
+        gridLayout_5->setContentsMargins(11, 11, 11, 11);
         gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
-        label_2 = new QLabel(Settings);
+        gridLayout_5->setContentsMargins(0, 0, 0, 0);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QStringLiteral("label_2"));
         sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
         label_2->setSizePolicy(sizePolicy);
 
         gridLayout_5->addWidget(label_2, 0, 0, 1, 1);
 
-        checkBox = new QCheckBox(Settings);
+        checkBox = new QCheckBox(layoutWidget1);
         checkBox->setObjectName(QStringLiteral("checkBox"));
 
         gridLayout_5->addWidget(checkBox, 1, 0, 1, 1);
 
-        twoThousandNine = new QCheckBox(Settings);
+        twoThousandNine = new QCheckBox(layoutWidget1);
         twoThousandNine->setObjectName(QStringLiteral("twoThousandNine"));
 
         gridLayout_5->addWidget(twoThousandNine, 2, 0, 1, 1);
 
-        twoThousandTen = new QCheckBox(Settings);
+        twoThousandTen = new QCheckBox(layoutWidget1);
         twoThousandTen->setObjectName(QStringLiteral("twoThousandTen"));
 
         gridLayout_5->addWidget(twoThousandTen, 3, 0, 1, 1);
 
-        twoThousandEleven = new QCheckBox(Settings);
+        twoThousandEleven = new QCheckBox(layoutWidget1);
         twoThousandEleven->setObjectName(QStringLiteral("twoThousandEleven"));
 
         gridLayout_5->addWidget(twoThousandEleven, 4, 0, 1, 1);
 
-        checkBox_2 = new QCheckBox(Settings);
+        checkBox_2 = new QCheckBox(layoutWidget1);
         checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
 
         gridLayout_5->addWidget(checkBox_2, 5, 0, 1, 1);
 
-
-        gridLayout_4->addLayout(gridLayout_5, 1, 1, 2, 1);
-
-        button_export_to_image = new QPushButton(Settings);
-        button_export_to_image->setObjectName(QStringLiteral("button_export_to_image"));
-        sizePolicy.setHeightForWidth(button_export_to_image->sizePolicy().hasHeightForWidth());
-        button_export_to_image->setSizePolicy(sizePolicy);
-
-        gridLayout_4->addWidget(button_export_to_image, 3, 3, 1, 1);
-
-        button_get_graph = new QPushButton(Settings);
+        button_get_graph = new QPushButton(settings);
         button_get_graph->setObjectName(QStringLiteral("button_get_graph"));
+        button_get_graph->setGeometry(QRect(240, 200, 85, 29));
         sizePolicy.setHeightForWidth(button_get_graph->sizePolicy().hasHeightForWidth());
         button_get_graph->setSizePolicy(sizePolicy);
-
-        gridLayout_4->addWidget(button_get_graph, 3, 2, 1, 1);
-
-        tabWidget->addTab(Settings, QString());
-
-        gridLayout->addWidget(tabWidget, 0, 0, 1, 1);
-
+        button_export_to_image = new QPushButton(settings);
+        button_export_to_image->setObjectName(QStringLiteral("button_export_to_image"));
+        button_export_to_image->setGeometry(QRect(350, 200, 92, 29));
+        sizePolicy.setHeightForWidth(button_export_to_image->sizePolicy().hasHeightForWidth());
+        button_export_to_image->setSizePolicy(sizePolicy);
+        stackedWidget->addWidget(settings);
+        settingsBtn = new QPushButton(centralWidget);
+        settingsBtn->setObjectName(QStringLiteral("settingsBtn"));
+        settingsBtn->setGeometry(QRect(210, 20, 93, 29));
+        bg = new QPushButton(centralWidget);
+        bg->setObjectName(QStringLiteral("bg"));
+        bg->setGeometry(QRect(0, 0, 661, 452));
+        bg->setIconSize(QSize(661, 452));
+        bg->setFlat(true);
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(2);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -242,8 +243,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        tabWidget->setTabText(tabWidget->indexOf(View), QApplication::translate("MainWindow", "Chart", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "Data", 0));
+        graphBtn->setText(QApplication::translate("MainWindow", "Graph", 0));
+        tableBtn->setText(QApplication::translate("MainWindow", "Table", 0));
         label->setText(QApplication::translate("MainWindow", "Municipalities", 0));
         sudbury->setText(QApplication::translate("MainWindow", "Sudbury (Greater)", 0));
         windsor->setText(QApplication::translate("MainWindow", "Windsor", 0));
@@ -261,9 +262,11 @@ public:
         twoThousandTen->setText(QApplication::translate("MainWindow", "2010", 0));
         twoThousandEleven->setText(QApplication::translate("MainWindow", "2011", 0));
         checkBox_2->setText(QApplication::translate("MainWindow", "2012", 0));
-        button_export_to_image->setText(QApplication::translate("MainWindow", "Save Graph", 0));
         button_get_graph->setText(QApplication::translate("MainWindow", "Get Graph", 0));
-        tabWidget->setTabText(tabWidget->indexOf(Settings), QApplication::translate("MainWindow", "Settings", 0));
+        button_export_to_image->setText(QApplication::translate("MainWindow", "Save Graph", 0));
+        settingsBtn->setText(QApplication::translate("MainWindow", "Settings", 0));
+        bg->setText(QApplication::translate("MainWindow", "bg", 0));
+        bg->setShortcut(QApplication::translate("MainWindow", "Ctrl+S", 0));
     } // retranslateUi
 
 };

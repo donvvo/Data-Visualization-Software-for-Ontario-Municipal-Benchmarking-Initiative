@@ -18,9 +18,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    QImage svg("../src/img/bg.png");
+    QPixmap welcome = welcome.fromImage(svg);
+    ui->bg->setIcon(welcome);
+
     QObject::connect(ui->button_get_graph, SIGNAL(clicked(bool)), this, SLOT(slot_get_graph(bool)));
     QObject::connect(ui->button_export_to_image,SIGNAL(clicked(bool)), this, SLOT(slot_save_to_image()));
-
+    QObject::connect(ui->bg, SIGNAL(clicked(bool)), this, SLOT(slot_welcome_disappear()));
 
 
 }
@@ -594,4 +599,10 @@ void MainWindow::on_tableBtn_clicked()
 void MainWindow::on_settingsBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+}
+
+
+void MainWindow::slot_welcome_disappear()
+{
+    ui->bg->setVisible(0);
 }
