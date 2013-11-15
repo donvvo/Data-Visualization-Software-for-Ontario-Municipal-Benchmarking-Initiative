@@ -568,11 +568,7 @@ void MainWindow::slot_save_to_image(){
     if (pos >= 0)
         saveExtension = saveFilename.mid(pos + 1);
 
-<<<<<<< HEAD
     if(!QPixmap::grabWidget(ui->graph).save(saveFilename, qPrintable(saveExtension)))
-=======
-    if(!QPixmap::grabWidget(ui->View).save(saveFilename, qPrintable(saveExtension)))
->>>>>>> bb2bd02ff607c2c0f798b5136d631269e4a146bf
     {
         // since you have a widget, just use grabWidget() here. winId() would possibly have
         // portability issues on other platforms.  qPrintable(saveExtension) is effectively
@@ -580,7 +576,6 @@ void MainWindow::slot_save_to_image(){
 
         QMessageBox::warning(this, "File could not be saved", "ok", QMessageBox::Ok);
     }
-<<<<<<< HEAD
 }
 
  void MainWindow::on_MainWindow_customContextMenuRequested(const QPoint &pos){}
@@ -600,8 +595,3 @@ void MainWindow::on_settingsBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
-=======
-}
-
- void MainWindow::on_MainWindow_customContextMenuRequested(const QPoint &pos){}
->>>>>>> bb2bd02ff607c2c0f798b5136d631269e4a146bf

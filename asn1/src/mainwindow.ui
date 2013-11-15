@@ -23,12 +23,11 @@
      <verstretch>0</verstretch>
     </sizepolicy>
    </property>
-<<<<<<< HEAD
    <widget class="QPushButton" name="graphBtn">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>80</y>
+      <x>20</x>
+      <y>20</y>
       <width>93</width>
       <height>29</height>
      </rect>
@@ -41,7 +40,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>80</y>
+      <y>20</y>
       <width>81</width>
       <height>29</height>
      </rect>
@@ -66,7 +65,7 @@
      </sizepolicy>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="graph">
      <widget class="QCustomPlot" name="customPlot" native="true">
@@ -75,7 +74,7 @@
         <x>0</x>
         <y>-100</y>
         <width>621</width>
-        <height>357</height>
+        <height>421</height>
        </rect>
       </property>
      </widget>
@@ -299,8 +298,8 @@
    <widget class="QPushButton" name="settingsBtn">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>80</y>
+      <x>210</x>
+      <y>20</y>
       <width>93</width>
       <height>29</height>
      </rect>
@@ -309,209 +308,6 @@
      <string>Settings</string>
     </property>
    </widget>
-=======
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="currentIndex">
-       <number>2</number>
-      </property>
-      <widget class="QWidget" name="View">
-       <attribute name="title">
-        <string>Chart</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="0" column="0">
-         <widget class="QCustomPlot" name="customPlot" native="true"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Data</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QTableView" name="tableView"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="Settings">
-       <attribute name="title">
-        <string>Settings</string>
-       </attribute>
-       <layout class="QGridLayout" name="gridLayout_4">
-        <item row="1" column="0" rowspan="2">
-         <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Municipalities</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="sudbury">
-            <property name="text">
-             <string>Sudbury (Greater)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="windsor">
-            <property name="text">
-             <string>Windsor</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="barrie">
-            <property name="text">
-             <string>Barrie</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QCheckBox" name="ottawa">
-            <property name="text">
-             <string>Ottawa</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QCheckBox" name="winnipeg">
-            <property name="text">
-             <string>Winnipeg</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="0">
-           <widget class="QCheckBox" name="calgary">
-            <property name="text">
-             <string>Calgary</string>
-            </property>
-           </widget>
-          </item>
-          <item row="7" column="0">
-           <widget class="QCheckBox" name="hamilton">
-            <property name="text">
-             <string>Hamilton</string>
-            </property>
-           </widget>
-          </item>
-          <item row="8" column="0">
-           <widget class="QCheckBox" name="london">
-            <property name="text">
-             <string>London</string>
-            </property>
-           </widget>
-          </item>
-          <item row="9" column="0">
-           <widget class="QCheckBox" name="toronto">
-            <property name="text">
-             <string>Toronto</string>
-            </property>
-           </widget>
-          </item>
-          <item row="10" column="0">
-           <widget class="QCheckBox" name="thunderBay">
-            <property name="text">
-             <string>Thunder Bay</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="1" rowspan="2">
-         <layout class="QGridLayout" name="gridLayout_5">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Years</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="checkBox">
-            <property name="text">
-             <string>2008</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="twoThousandNine">
-            <property name="text">
-             <string>2009</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="twoThousandTen">
-            <property name="text">
-             <string>2010</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="0">
-           <widget class="QCheckBox" name="twoThousandEleven">
-            <property name="text">
-             <string>2011</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QCheckBox" name="checkBox_2">
-            <property name="text">
-             <string>2012</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="3" column="3">
-         <widget class="QPushButton" name="button_export_to_image">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Save Graph</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QPushButton" name="button_get_graph">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="text">
-           <string>Get Graph</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-    </item>
-   </layout>
->>>>>>> bb2bd02ff607c2c0f798b5136d631269e4a146bf
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

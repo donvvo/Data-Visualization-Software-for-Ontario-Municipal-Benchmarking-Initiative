@@ -37,15 +37,12 @@ private slots:
 
     void slot_save_to_image();
 
-<<<<<<< HEAD
     void on_graphBtn_clicked();
 
     void on_tableBtn_clicked();
 
     void on_settingsBtn_clicked();
 
-=======
->>>>>>> bb2bd02ff607c2c0f798b5136d631269e4a146bf
 private:
     Ui::MainWindow *ui;
 
