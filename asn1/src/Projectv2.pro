@@ -16,9 +16,11 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     qcustomplot.cpp \
     stub.cpp \
+    chartcolor.cpp
 
 HEADERS  += mainwindow.h \
     qcustomplot.h \
     stub.h \
+    chartcolor.h
 
 FORMS    += mainwindow.ui
