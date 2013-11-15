@@ -15,6 +15,13 @@ chartcolour::chartcolour()
     colourSelect.append("blue");
 }
 
+<<<<<<< HEAD
+=======
+chartcolour::~chartcolour(){
+    delete colourSelect;
+}
+
+>>>>>>> bb2bd02ff607c2c0f798b5136d631269e4a146bf
 QString chartcolour::getColour(int i){
     return colourSelect.at(i);
 }
