@@ -363,6 +363,31 @@
      <string>line Graph</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="bg">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>661</width>
+      <height>452</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>bg</string>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>661</width>
+      <height>452</height>
+     </size>
+    </property>
+    <property name="shortcut">
+     <string>Ctrl+S</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

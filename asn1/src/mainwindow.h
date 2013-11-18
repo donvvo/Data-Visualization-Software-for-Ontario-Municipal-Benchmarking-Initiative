@@ -43,9 +43,13 @@ private slots:
 
     void on_settingsBtn_clicked();
 
+<<<<<<< HEAD
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
     void on_lineGraphBtn_clicked();
+=======
+    void slot_welcome_disappear();
+>>>>>>> b909f1976d5310f1e4e5aa1886a724c661b68586
 
 private:
     Ui::MainWindow *ui;
