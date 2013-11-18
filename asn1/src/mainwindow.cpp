@@ -50,7 +50,6 @@ void MainWindow::slot_get_graph(bool)
     double i = 0;  //! loop index; counts how many checkboxes where checked
     int barsAdded = 0;
 
-
     //! Creating the legend box
     ui -> customPlot -> legend -> clearItems();
     ui -> customPlot -> axisRect()->insetLayout()->setInsetAlignment(0,Qt::AlignTop|Qt::AlignRight);
@@ -70,8 +69,6 @@ void MainWindow::slot_get_graph(bool)
     ui->customPlot->axisRect()->setMargins(QMargins(0,0,150,0));
     ui->customPlot->axisRect()->insetLayout()->setInsetPlacement(0, QCPLayoutInset::ipFree);
     ui->customPlot->axisRect()->insetLayout()->setInsetRect(0, QRectF(1.1,0,0.1,0.1));
-
-
 
     //! Scaling the bar width based on the number of cities checked
         if (ui->barrie->isChecked()) {
@@ -106,7 +103,6 @@ void MainWindow::slot_get_graph(bool)
             ++i;
         }
 
-
     //! Calculating the new bar width
     double totalWidth = 0.8;
     barWidth = totalWidth / i;
@@ -121,13 +117,19 @@ void MainWindow::slot_get_graph(bool)
             myBars->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
             myBars->setName("Barrie");
 
+
             ui->customPlot->addPlottable(myBars);
+
             //! Barrie data
             QVector<double> barrieDatatemp = stub->getData("Barrie");
             QVector<double> barrieData;
             QVector<double> valueYears;
 
             offset = (barWidth*barsAdded)+(barWidth/2);
+
+
+
+
 
             /*!
                 Checks which years are checked.  Plots the years selected, and scales the graph accordingly.
@@ -155,6 +157,7 @@ void MainWindow::slot_get_graph(bool)
 
             ui->customPlot->rescaleAxes();
             ui->customPlot->replot();
+
         }
 
 
@@ -248,8 +251,6 @@ void MainWindow::slot_get_graph(bool)
 
             ui->customPlot->rescaleAxes();
             ui->customPlot->replot();
-
-
         }
 
 
@@ -271,6 +272,12 @@ void MainWindow::slot_get_graph(bool)
             /*!
                 Checks which years are checked.  Plots the years selected, and scales the graph accordingly.
               */
+            /*
+            if (ui->twoThousandEight->isChecked())
+            {
+
+            }
+            */
             if(ui->twoThousandNine->isChecked())
             {
                 valueYears << 2009-setBack+offset;
@@ -286,6 +293,12 @@ void MainWindow::slot_get_graph(bool)
                 valueYears << 2011-setBack+offset;
                 hamiltonData << hamiltonDatatemp.at(2);
             }
+            /*
+            if (ui->twoThousandTwelve->isChecked())
+            {
+
+            }
+            */
 
             ++barsAdded;
 
@@ -558,7 +571,81 @@ void MainWindow::slot_get_graph(bool)
             ui->customPlot->rescaleAxes();
             ui->customPlot->replot();
         }
+
+        /*!
+            Add line graph
+          */
+        // generate some data:
+        QVector<double> x(101), y(101); // initialize with entries 0..100
+        for (int i=0; i<101; ++i)
+        {
+          x[i] = i/50.0 - 1; // x goes from -1 to 1
+          y[i] = x[i]*x[i]; // let's plot a quadratic function
+        }
+        // create graph and assign data to it:
+        ui->lineGraph->addGraph();
+        ui->lineGraph->graph(0)->setData(x, y);
+        // give the axes some labels:
+        ui->lineGraph->xAxis->setLabel("x");
+        ui->lineGraph->yAxis->setLabel("y");
+        // set axes ranges, so we see all data:
+        ui->lineGraph->xAxis->setRange(-1, 1);
+        ui->lineGraph->yAxis->setRange(0, 1);
+        ui->lineGraph->replot();
+
+        //! Plot data and create a bar graph for Barrie if this city is selected
+        /*if(ui->barrie->isChecked()) {   //! if barrie is checked
+                QCPGraph *myBars = new QCPGraph(ui->lineGraph->xAxis, ui->customPlot->yAxis);
+                myBars->setWidth(barWidth);
+                myBars->setBrush(QBrush(QColor(colourSelect->getColour(barsAdded))));
+                myBars->setName("Barrie");
+
+
+                ui->customPlot->addPlottable(myBars);
+
+                //! Barrie data
+                QVector<double> barrieDatatemp = stub->getData("Barrie");
+                QVector<double> barrieData;
+                QVector<double> valueYears;
+
+                offset = (barWidth*barsAdded)+(barWidth/2);
+
+
+
+*/
+
+                /*!
+                    Checks which years are checked.  Plots the years selected, and scales the graph accordingly.
+                  */
+               /*
+                if(ui->twoThousandNine->isChecked())
+                {
+                    valueYears << 2009-setBack+offset;
+                    barrieData << barrieDatatemp.at(0);
+                }
+                if(ui->twoThousandTen->isChecked())
+                {
+                    valueYears << 2010-setBack+offset;
+                    barrieData << barrieDatatemp.at(1);
+                }
+                if(ui->twoThousandEleven->isChecked())
+                {
+                    valueYears << 2011-setBack+offset;
+                    barrieData << barrieDatatemp.at(2);
+                }
+                //!valueYears << 2009-setBack+offset << 2010-setBack+offset<< 2011-setBack+offset;
+                ++barsAdded;
+
+
+                myBars->setData(valueYears, barrieData);
+
+                ui->customPlot->rescaleAxes();
+                ui->customPlot->replot();
+
+            }
+*/
 }
+
 
 void MainWindow::slot_save_to_image(){
     QString saveFilename = QFileDialog::getSaveFileName(this, "Save as", "Choose a filename", "PNG(*.png);; TIFF(*.tiff *.tif);; JPEG(*.jpg *.jpeg)");
@@ -594,4 +681,9 @@ void MainWindow::on_tableBtn_clicked()
 void MainWindow::on_settingsBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_lineGraphBtn_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(3);
 }
